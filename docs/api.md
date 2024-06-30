@@ -25,31 +25,31 @@ ID and private code.
 
 For instance, to obtain information about a project, using curl:
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo
 
 It is also possible to generate a token, and then use it later to
 authenticate instead of basic auth. For instance, start by generating
 the token (of course, you need to authenticate):
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/token
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo/token
     {"token": "WyJ0ZXN0Il0.Rt04fNMmxp9YslCRq8hB6jE9s1Q"}
 
 Make sure to store this token securely: it allows almost full access to the
 project. For instance, use it to obtain information about the project
 (replace `PROJECT_TOKEN` with the actual token):
 
-    $ curl --oauth2-bearer "PROJECT_TOKEN" https://ihatemoney.org/api/projects/demo
+    $ curl --oauth2-bearer "PROJECT_TOKEN" https://ilovemoney.org/api/projects/demo
 
 This works by sending the token in the Authorization header, so doing it
 "manually" with curl looks like:
 
-    $ curl --header "Authorization: Bearer PROJECT_TOKEN" https://ihatemoney.org/api/projects/demo
+    $ curl --header "Authorization: Bearer PROJECT_TOKEN" https://ilovemoney.org/api/projects/demo
 
 This token can also be used to authenticate for a project on the web
 interface, which can be useful to generate invitation links. You would
 simply create an URL of the form:
 
-    https://ihatemoney.org/demo/join/PROJECT_TOKEN
+    https://ilovemoney.org/demo/join/PROJECT_TOKEN
 
 Such a link grants read-write access to the project associated with the token,
 but it does not allow to change project settings.
@@ -80,7 +80,7 @@ Optional arguments:
 
 Here is the command:
 
-    $ curl -X POST https://ihatemoney.org/api/projects \
+    $ curl -X POST https://ilovemoney.org/api/projects \
     -d 'name=yay&id=yay&password=yay&contact_email=yay@notmyidea.org'
     "yay"
 
@@ -92,7 +92,7 @@ change to lowercase, etc).
 
 Getting information about the project:
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo
     {
         "id": "demo",
         "name": "demonstration",
@@ -110,7 +110,7 @@ Getting information about the project:
 Updating a project is done with the `PUT` verb:
 
     $ curl --basic -u yay:yay -X PUT\
-    https://ihatemoney.org/api/projects/yay -d\
+    https://ilovemoney.org/api/projects/yay -d\
     'name=yay&id=yay&current_password=yay&password=newyay&contact_email=youpi@notmyidea.org'
 
 You need to give the current private code as the `current_password` field. This is a security
@@ -122,14 +122,14 @@ Note that in any case you can never change the ID of a project.
 
 Just send a DELETE request ont the project URI :
 
-    $ curl --basic -u demo:demo -X DELETE https://ihatemoney.org/api/projects/demo
+    $ curl --basic -u demo:demo -X DELETE https://ilovemoney.org/api/projects/demo
 
 ### Members
 
 You can get all the members with a `GET` on
 `/api/projects/<id>/members`:
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/members\
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo/members\
     [{"weight": 1, "activated": true, "id": 31, "name": "Arnaud"},
      {"weight": 1, "activated": true, "id": 32, "name": "Alexis"},
      {"weight": 1, "activated": true, "id": 33, "name": "Olivier"},
@@ -138,13 +138,13 @@ You can get all the members with a `GET` on
 Add a member with a `POST` request on `/api/projects/<id>/members`:
 
     $ curl --basic -u demo:demo -X POST\
-    https://ihatemoney.org/api/projects/demo/members -d 'name=tatayoyo'
+    https://ilovemoney.org/api/projects/demo/members -d 'name=tatayoyo'
     35
 
 You can also `PUT` a new version of a member (changing its name):
 
     $ curl --basic -u demo:demo -X PUT\
-    https://ihatemoney.org/api/projects/demo/members/36\
+    https://ilovemoney.org/api/projects/demo/members/36\
     -d 'name=yeaaaaah'
     {"activated": true, "id": 36, "name": "yeaaaaah", "weight": 1}
 
@@ -152,7 +152,7 @@ Delete a member with a `DELETE` request on
 `/api/projects/<id>/members/<member-id>`:
 
     $ curl --basic -u demo:demo -X DELETE\
-    https://ihatemoney.org/api/projects/demo/members/35
+    https://ilovemoney.org/api/projects/demo/members/35
     "OK
 
 ### Bills
@@ -160,11 +160,11 @@ Delete a member with a `DELETE` request on
 You can get the list of bills by doing a `GET` on
 `/api/projects/<id>/bills` :
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/bills
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo/bills
 
 Or get a specific bill by ID:
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/bills/42
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo/bills/42
     {
       "id": 42,
       "payer_id": 11,
@@ -211,7 +211,7 @@ And optional parameters:
 Returns the id of the created bill :
 
     $ curl --basic -u demo:demo -X POST\
-    https://ihatemoney.org/api/projects/demo/bills\
+    https://ilovemoney.org/api/projects/demo/bills\
     -d "date=2011-09-10&what=raclette&payer=1&payed_for=3&payed_for=5&amount=200"
     80
 
@@ -219,7 +219,7 @@ You can also `PUT` a new version of the bill at
 `/api/projects/<id>/bills/<bill-id>`:
 
     $ curl --basic -u demo:demo -X PUT\
-    https://ihatemoney.org/api/projects/demo/bills/80\
+    https://ilovemoney.org/api/projects/demo/bills/80\
     -d "date=2011-09-10&what=raclette&payer=1&payed_for=3&payed_for=5&payed_for=1&amount=250"
     80
 
@@ -227,7 +227,7 @@ And you can of course `DELETE` them at
 `/api/projects/<id>/bills/<bill-id>`:
 
     $ curl --basic -u demo:demo -X DELETE\
-    https://ihatemoney.org/api/projects/demo/bills/80\
+    https://ilovemoney.org/api/projects/demo/bills/80\
     "OK"
 
 ### Statistics
@@ -235,7 +235,7 @@ And you can of course `DELETE` them at
 You can get some project stats with a `GET` on
 `/api/projects/<id>/statistics`:
 
-    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/statistics
+    $ curl --basic -u demo:demo https://ilovemoney.org/api/projects/demo/statistics
     [
         {
             "member": {"activated": true, "id": 1, "name": "alexis", "weight": 1.0},
@@ -256,7 +256,7 @@ You can get some project stats with a `GET` on
 You can get a list of supported currencies with a `GET` on
 `/api/currencies`:
 
-    $ curl --basic https://ihatemoney.org/api/currencies
+    $ curl --basic https://ilovemoney.org/api/currencies
     [
         "XXX",
         "AED",

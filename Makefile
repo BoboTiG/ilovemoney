@@ -36,9 +36,9 @@ remove-install-stamp:
 update: remove-install-stamp install ## Update the dependencies
 
 .PHONY: serve
-serve: install build-translations ## Run the ihatemoney server
-	@echo 'Running ihatemoney on http://localhost:5000'
-	FLASK_DEBUG=1 FLASK_APP=ihatemoney.wsgi $(VENV)/bin/flask run --host=0.0.0.0
+serve: install build-translations ## Run the ilovemoney server
+	@echo 'Running ilovemoney on http://localhost:5000'
+	FLASK_DEBUG=1 FLASK_APP=ilovemoney.wsgi $(VENV)/bin/flask run --host=0.0.0.0
 
 .PHONY: test
 test: install-dev ## Run the tests
@@ -53,13 +53,13 @@ isort: install-dev ## Run the tests
 	$(VENV)/bin/isort .
 
 .PHONY: release
-release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
+release: install-dev ## Release a new version (see https://ilovemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
 	$(VENV)/bin/fullrelease
 
 .PHONY: compress-showcase
 compress-showcase:
 	@which $(MAGICK_MOGRIFY) >/dev/null || (echo "ImageMagick 'mogrify' ($(MAGICK_MOGRIFY)) is missing" && exit 1)
-	$(MAGICK_MOGRIFY) -format webp -resize '75%>' -quality 50 -define webp:method=6:auto-filter=true -path ihatemoney/static/showcase/ 'assets/showcase/*.jpg'
+	$(MAGICK_MOGRIFY) -format webp -resize '75%>' -quality 50 -define webp:method=6:auto-filter=true -path ilovemoney/static/showcase/ 'assets/showcase/*.jpg'
 
 .PHONY: compress-assets
 compress-assets: compress-showcase ## Compress static assets
@@ -67,27 +67,27 @@ compress-assets: compress-showcase ## Compress static assets
 	mkdir $(TEMPDIR)/zopfli
 	$(eval CPUCOUNT := $(shell python -c "import psutil; print(psutil.cpu_count(logical=False))"))
 # We need to go into the directory to use an absolute path as a prefix
-	cd ihatemoney/static/images/; find -name '*.png' -printf '%f\0' | xargs --null --max-args=1 --max-procs=$(CPUCOUNT) $(ZOPFLIPNG) --iterations=500 --filters=01234mepb --lossy_8bit --lossy_transparent --prefix=$(TEMPDIR)/zopfli/
-	mv $(TEMPDIR)/zopfli/* ihatemoney/static/images/
+	cd ilovemoney/static/images/; find -name '*.png' -printf '%f\0' | xargs --null --max-args=1 --max-procs=$(CPUCOUNT) $(ZOPFLIPNG) --iterations=500 --filters=01234mepb --lossy_8bit --lossy_transparent --prefix=$(TEMPDIR)/zopfli/
+	mv $(TEMPDIR)/zopfli/* ilovemoney/static/images/
 
 .PHONY: build-translations
 build-translations: ## Build the translations
-	$(VENV)/bin/pybabel compile -d ihatemoney/translations
+	$(VENV)/bin/pybabel compile -d ilovemoney/translations
 
 .PHONY: extract-translations
 extract-translations: ## Extract new translations from source code
-	$(VENV)/bin/pybabel extract --add-comments "I18N:" --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
-	$(VENV)/bin/pybabel update -i ihatemoney/messages.pot -d ihatemoney/translations/
+	$(VENV)/bin/pybabel extract --add-comments "I18N:" --strip-comments --omit-header --no-location --mapping-file ilovemoney/babel.cfg -o ilovemoney/messages.pot ilovemoney
+	$(VENV)/bin/pybabel update -i ilovemoney/messages.pot -d ilovemoney/translations/
 
 .PHONY: create-database-revision
 create-database-revision: ## Create a new database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
-	$(PYTHON) -m ihatemoney.manage db migrate -d ihatemoney/migrations -m "$${rev_message}"
+	$(PYTHON) -m ilovemoney.manage db migrate -d ilovemoney/migrations -m "$${rev_message}"
 
 .PHONY: create-empty-database-revision
 create-empty-database-revision: ## Create an empty database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
-	$(PYTHON) -m ihatemoney.manage db revision -d ihatemoney/migrations -m "$${rev_message}"
+	$(PYTHON) -m ilovemoney.manage db revision -d ilovemoney/migrations -m "$${rev_message}"
 
 .PHONY: clean
 clean: ## Destroy the virtual environment

@@ -36,7 +36,7 @@ This document describes changes between each past release.
 ### Currency conversion API workarounds
 
 We are using an external API for currency conversion.  This API recently
-started requiring an API key, and this broke I Hate Money in many ways.
+started requiring an API key, and this broke I Love Money in many ways.
 
 This release adds a set of workarounds for this issue.  This should restore
 basic functionality such as adding bills.  However, we had to disable
@@ -47,7 +47,7 @@ some operations to prevent crashing:
 - Adding or editing a bill with a currency that differs from the default currency
   of the project is no longer possible
 
-[Longer-term solutions are being discussed](https://github.com/spiral-project/ihatemoney/issues/1232).
+[Longer-term solutions are being discussed](https://github.com/BoboTiG/ilovemoney/issues/1232).
 If you are using currencies in your projects, your input is welcome.
 
 ### Added
@@ -119,16 +119,16 @@ tested with up to Python 3.11
 - Make docker image production-ready: support PostgreSQL, allow customizing port, PUID, PGID (#919)
 - List supported currencies in API under api/currencies (#961)
 - Allow to import bills in CSV format, compatible with Cospend (#951)
-  Note that there is a [known issue with this new feature](https://github.com/spiral-project/ihatemoney/issues/980)
+  Note that there is a [known issue with this new feature](https://github.com/BoboTiG/ilovemoney/issues/980)
 
 ### New settings
 
-- Add [SHOW_ADMIN_EMAIL](https://ihatemoney.readthedocs.io/en/latest/configuration.html#show-admin-email)
+- Add [SHOW_ADMIN_EMAIL](https://ilovemoney.readthedocs.io/en/latest/configuration.html#show-admin-email)
   setting (#965)
 
 ### Changed settings
 
-- [MAIL_DEFAULT_SENDER](https://ihatemoney.readthedocs.io/en/latest/configuration.html#mail-default-sender)
+- [MAIL_DEFAULT_SENDER](https://ilovemoney.readthedocs.io/en/latest/configuration.html#mail-default-sender)
   is now a string instead of a tuple.  The old syntax is still accepted but support will be dropped on
   the next major release (#1007)
 
@@ -166,7 +166,7 @@ tested with up to Python 3.11
 
 ### New settings
 
--   Add [LEGAL_LINK](https://ihatemoney.readthedocs.io/en/latest/configuration.html#legal-link)
+-   Add [LEGAL_LINK](https://ilovemoney.readthedocs.io/en/latest/configuration.html#legal-link)
     setting (#883)
 
 ### Changed
@@ -196,7 +196,7 @@ tested with up to Python 3.11
 The minimum supported version is now Python 3.6, and the project is
 tested with up to Python 3.9
 
-See [upgrade instructions](https://ihatemoney.readthedocs.io/en/latest/upgrade.html)
+See [upgrade instructions](https://ilovemoney.readthedocs.io/en/latest/upgrade.html)
 to make sure the upgrade goes smoothly.
 
 ### Security
@@ -226,18 +226,18 @@ to make sure the upgrade goes smoothly.
 -   Add translations for Greek, Esperanto, Italian, Japanese, Portuguese
     and Swedish
 -   Publish an [official docker
-    image](https://hub.docker.com/r/ihatemoney/ihatemoney)
+    image](https://hub.docker.com/r/ilovemoney/ilovemoney)
 
 ### New settings
 
 -   Add
-    [ENABLE_CAPTCHA](https://ihatemoney.readthedocs.io/en/latest/configuration.html#enable-captcha)
+    [ENABLE_CAPTCHA](https://ilovemoney.readthedocs.io/en/latest/configuration.html#enable-captcha)
     setting (#844)
 -   Use and document
-    [SESSION_COOKIE_SECURE](https://ihatemoney.readthedocs.io/en/latest/configuration.html#session-cookie-secure)
+    [SESSION_COOKIE_SECURE](https://ilovemoney.readthedocs.io/en/latest/configuration.html#session-cookie-secure)
     setting (#845)
 -   Use and document
-    [BABEL_DEFAULT_TIMEZONE](https://ihatemoney.readthedocs.io/en/latest/configuration.html#babel-default-timezone)
+    [BABEL_DEFAULT_TIMEZONE](https://ilovemoney.readthedocs.io/en/latest/configuration.html#babel-default-timezone)
     setting (#590)
 
 ### Changed
@@ -279,13 +279,13 @@ to make sure the upgrade goes smoothly.
     new contributors
 -   Improve documentation regarding database migrations (#569)
 -   Added a page about [the security
-    model](https://ihatemoney.readthedocs.io/en/latest/security.html)
+    model](https://ilovemoney.readthedocs.io/en/latest/security.html)
     (#858)
 
 ## 4.1.5 (2020-07-26)
 
 This release fixes a [serious security
-issue](https://github.com/spiral-project/ihatemoney/security/advisories/GHSA-67j9-c52g-w2q9).
+issue](https://github.com/BoboTiG/ilovemoney/security/advisories/GHSA-67j9-c52g-w2q9).
 
 All users are encouraged to upgrade.
 
@@ -429,7 +429,7 @@ to support Python 2: you should upgrade to Python 3!
 -   Add a favicon.ico (#381)
 -   Document external mail server configuration (#278)
 -   Improve settings documentation styling (#251)
--   Add a ihatemoney delete-project command to delete a project (#375)
+-   Add a ilovemoney delete-project command to delete a project (#375)
 -   Add nice 404 error pages (#379)
 
 ### Changed
@@ -453,7 +453,7 @@ to support Python 2: you should upgrade to Python 3!
 
 ### Fixed
 
--   Fix the "IOError" crash when running [ihatemoney
+-   Fix the "IOError" crash when running [ilovemoney
     generate-config]{.title-ref} (#308)
 -   Made the left-hand sidebar scrollable (#318)
 -   Fix and enhanche Docker support (#320, #321)
@@ -469,10 +469,10 @@ to support Python 2: you should upgrade to Python 3!
 ### Breaking changes
 
 -   `ADMIN_PASSWORD` is now stored hashed. The
-    `ihatemoney generate_password_hash` command can now be used to
+    `ilovemoney generate_password_hash` command can now be used to
     generate a proper password HASH (#236)
 -   Turn the WSGI file into a python module, renamed from
-    budget/ihatemoney.wsgi to ihatemoney/wsgi.py. Please update your
+    budget/ilovemoney.wsgi to ilovemoney/wsgi.py. Please update your
     Apache/Gunicorn configuration! (#218)
 -   Admin privileges are now required to access the dashboard (#262)
 -   [password]{.title-ref} field has been removed from project API GET
@@ -489,7 +489,7 @@ to support Python 2: you should upgrade to Python 3!
 
 ### Added
 
--   `ihatemoney generate-config` to give working examples of config
+-   `ilovemoney generate-config` to give working examples of config
     files (#275)
 -   Statistics tab (#257)
 -   Python3.6 support (#259)

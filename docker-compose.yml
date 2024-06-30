@@ -4,17 +4,17 @@
 # please adapt the local path.  If you use a custom PUID and PGID, you need to create
 # the local path beforehand with the correct user/group.
 #
-# You can generate an admin password with: docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney:latest generate_password_hash
+# You can generate an admin password with: docker run -it --rm --entrypoint ilovemoney ilovemoney/ilovemoney:latest generate_password_hash
 # IMPORTANT: replace every dollar character in the result with a double dollar ($ -> $$)
 # To disable admin access, simply set the password to an empty string (ADMIN_PASSWORD=)
 #
-# See https://ihatemoney.readthedocs.io/en/latest/configuration.html to understand all settings.
+# See https://ilovemoney.readthedocs.io/en/latest/configuration.html to understand all settings.
 
 version: "3.9"
 
 services:
-  ihatemoney:
-    image: ihatemoney/ihatemoney:latest
+  ilovemoney:
+    image: ilovemoney/ilovemoney:latest
     environment:
       - DEBUG=False
       - ACTIVATE_DEMO_PROJECT=True
@@ -33,7 +33,7 @@ services:
       - SECRET_KEY=tralala
       - SESSION_COOKIE_SECURE=True
       - SHOW_ADMIN_EMAIL=True
-      - SQLALCHEMY_DATABASE_URI=sqlite:////database/ihatemoney.db
+      - SQLALCHEMY_DATABASE_URI=sqlite:////database/ilovemoney.db
       - SQLALCHEMY_TRACK_MODIFICATIONS=False
       - APPLICATION_ROOT=/
       - ENABLE_CAPTCHA=False

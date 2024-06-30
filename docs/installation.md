@@ -1,9 +1,9 @@
 # Installation
 
-There are multiple ways to install «Ihatemoney» on your system :
+There are multiple ways to install «Ilovemoney» on your system :
 
 1.  {ref}`docker`
-2.  [Via Yunohost](https://github.com/YunoHost-Apps/ihatemoney_ynh) (a
+2.  [Via Yunohost](https://github.com/YunoHost-Apps/ilovemoney_ynh) (a
     server operating system aiming to make self-hosting accessible to
     anyone)
 3.  {ref}`cloud`
@@ -11,24 +11,24 @@ There are multiple ways to install «Ihatemoney» on your system :
 
 
 :::{note}
-We lack some knowledge about packaging to make Ihatemoney installable on
+We lack some knowledge about packaging to make Ilovemoney installable on
 mainstream Linux distributions. If you want to give us a hand on the
 topic, please check-out [the issue about debian
-packaging](https://github.com/spiral-project/ihatemoney/issues/227).
+packaging](https://github.com/BoboTiG/ilovemoney/issues/227).
 :::
 
 (docker)=
 ## With Docker
 
 Docker images are published [on the Docker
-hub](https://hub.docker.com/r/ihatemoney/ihatemoney/).
+hub](https://hub.docker.com/r/ilovemoney/ilovemoney/).
 
 This is probably the simplest way to get something running. Once you
 have Docker installed on your system, just issue :
 
-    docker run -d -p 8000:8000 ihatemoney/ihatemoney
+    docker run -d -p 8000:8000 ilovemoney/ilovemoney
 
-Ihatemoney is now available on <http://localhost:8000>.
+Ilovemoney is now available on <http://localhost:8000>.
 
 All {ref}`settings<configuration>` can be
 passed with `-e` parameters e.g. with a secure `SECRET_KEY`, an external
@@ -42,17 +42,17 @@ mail server and an external database:
     -e MAIL_USERNAME=your-email@gmail.com \
     -e MAIL_PASSWORD=your-password \
     -e MAIL_USE_SSL=True \
-    ihatemoney/ihatemoney
+    ilovemoney/ilovemoney
 
 If you are running this locally, you might need to disable the secure session cookies, as they do not work locally. You need to pass `-e SESSION_COOKIE_SECURE=False` to docker run.
 
 A volume can also be specified to persist the default database file:
 
-    docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney/ihatemoney
+    docker run -d -p 8000:8000 -v /host/path/to/database:/database ilovemoney/ilovemoney
 
 To enable the Admin dashboard, first generate a hashed password with:
 
-    docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash
+    docker run -it --rm --entrypoint ilovemoney ilovemoney/ilovemoney generate_password_hash
 
 At the prompt, enter a password to use for the admin dashboard. The
 command will print the hashed password string.
@@ -66,14 +66,14 @@ Additional gunicorn parameters can be passed using the docker `CMD`
 parameter. For example, use the following command to add more gunicorn
 workers:
 
-    docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
+    docker run -d -p 8000:8000 ilovemoney/ilovemoney -w 3
 
 (cloud)=
 ## On a Cloud Provider
 
 Some Paas (Platform-as-a-Service), provide a documentation or even a quick installation process to deploy and enjoy your instance within a minute:
 
-  * [alwaysdata](https://www.alwaysdata.com/en/marketplace/ihatemoney/)
+  * [alwaysdata](https://www.alwaysdata.com/en/marketplace/ilovemoney/)
 
 (manual-installation)=
 ## Via a manual installation
@@ -81,7 +81,7 @@ Some Paas (Platform-as-a-Service), provide a documentation or even a quick insta
 (system-requirements)=
 ### Requirements
 
-«Ihatemoney» depends on:
+«Ilovemoney» depends on:
 
 -   **Python**: any version from 3.7 to 3.12 will work.
 -   **A database backend**: choose among SQLite, PostgreSQL, MariaDB (>=
@@ -99,7 +99,7 @@ fine for most small to medium setups.
 
 ::: {note}
 If curious, source config templates can be found in the [project git
-repository](https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/conf-templates).
+repository](https://github.com/BoboTiG/ilovemoney/tree/master/ilovemoney/conf-templates).
 :::
 
 (virtualenv-preparation)=
@@ -110,8 +110,8 @@ Choose an installation path, here the current user's home directory
 
 Create a virtual environment:
 
-    python3 -m venv ~/ihatemoney
-    cd ~/ihatemoney
+    python3 -m venv ~/ilovemoney
+    cd ~/ilovemoney
 
 Activate the virtual environment:
 
@@ -127,31 +127,31 @@ terminal.
 
 Install the latest release with pip:
 
-    pip install ihatemoney
+    pip install ilovemoney
 
 ### Test it
 
 Once installed, you can start a test server:
 
-    ihatemoney generate-config ihatemoney.cfg > ihatemoney.cfg
-    export IHATEMONEY_SETTINGS_FILE_PATH=$PWD/ihatemoney.cfg 
-    ihatemoney db upgrade head
-    ihatemoney runserver
+    ilovemoney generate-config ilovemoney.cfg > ilovemoney.cfg
+    export ILOVEMONEY_SETTINGS_FILE_PATH=$PWD/ilovemoney.cfg 
+    ilovemoney db upgrade head
+    ilovemoney runserver
 
 And point your browser at <http://localhost:5000>.
 
 ### Generate your configuration
 
-1.  Initialize the ihatemoney directories:
+1.  Initialize the ilovemoney directories:
 
-        mkdir /etc/ihatemoney /var/lib/ihatemoney
+        mkdir /etc/ilovemoney /var/lib/ilovemoney
 
 2.  Generate settings:
 
-        ihatemoney generate-config ihatemoney.cfg > /etc/ihatemoney/ihatemoney.cfg
-        chmod 740 /etc/ihatemoney/ihatemoney.cfg
+        ilovemoney generate-config ilovemoney.cfg > /etc/ilovemoney/ilovemoney.cfg
+        chmod 740 /etc/ilovemoney/ilovemoney.cfg
 
-You probably want to adjust `/etc/ihatemoney/ihatemoney.cfg` contents,
+You probably want to adjust `/etc/ilovemoney/ilovemoney.cfg` contents,
 you may do it later, see {ref}`configuration`.
 
 (mariadb)=
@@ -212,14 +212,14 @@ want. Don't hesitate to contribute a small tutorial here if you want.
 
 1.  Fix permissions (considering `www-data` is the user running apache):
 
-        chgrp www-data /etc/ihatemoney/ihatemoney.cfg
-        chown www-data /var/lib/ihatemoney
+        chgrp www-data /etc/ilovemoney/ilovemoney.cfg
+        chown www-data /var/lib/ilovemoney
 
 2.  Install Apache and mod_wsgi : `libapache2-mod-wsgi(-py3)` for Debian
     based and `mod_wsgi` for RedHat based distributions
 
 3.  Create an Apache virtual host, the command
-    `ihatemoney generate-config apache-vhost.conf` will output a good
+    `ilovemoney generate-config apache-vhost.conf` will output a good
     starting point (read and adapt it).
 
 4.  Activate the virtual host if needed and restart Apache
@@ -230,35 +230,35 @@ Install Gunicorn:
 
     pip install gunicorn
 
-1.  Create a dedicated unix user (here called `ihatemoney`),
+1.  Create a dedicated unix user (here called `ilovemoney`),
     required dirs, and fix permissions:
 
-        useradd ihatemoney
-        chown ihatemoney /var/lib/ihatemoney/
-        chgrp ihatemoney /etc/ihatemoney/ihatemoney.cfg
+        useradd ilovemoney
+        chown ilovemoney /var/lib/ilovemoney/
+        chgrp ilovemoney /etc/ilovemoney/ilovemoney.cfg
 
 2.  Create gunicorn config file :
 
-        ihatemoney generate-config gunicorn.conf.py > /etc/ihatemoney/gunicorn.conf.py
+        ilovemoney generate-config gunicorn.conf.py > /etc/ilovemoney/gunicorn.conf.py
 
 3.  Setup Supervisord or systemd
 
     -   To use Supervisord, create supervisor config file :
 
-            ihatemoney generate-config supervisord.conf > /etc/supervisor/conf.d/ihatemoney.conf
+            ilovemoney generate-config supervisord.conf > /etc/supervisor/conf.d/ilovemoney.conf
 
-    -   To use systemd services, create `ihatemoney.service` in `/etc/systemd/system/ihatemoney.service` [^1]:
+    -   To use systemd services, create `ilovemoney.service` in `/etc/systemd/system/ilovemoney.service` [^1]:
 
             [Unit]
-            Description=I hate money
+            Description=I love money
             Requires=network.target postgresql.service
             After=network.target postgresql.service
 
             [Service]
             Type=simple
-            User=ihatemoney
-            ExecStart=%h/ihatemoney/bin/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
-            SyslogIdentifier=ihatemoney
+            User=ilovemoney
+            ExecStart=%h/ilovemoney/bin/gunicorn -c /etc/ilovemoney/gunicorn.conf.py ilovemoney.wsgi:application
+            SyslogIdentifier=ilovemoney
 
             [Install]
             WantedBy=multi-user.target
@@ -267,23 +267,23 @@ Install Gunicorn:
         folder.
 
         If you use SQLite as database: remove mentions of
-        `postgresql.service` in `ihatemoney.service`. If you use MariaDB
+        `postgresql.service` in `ilovemoney.service`. If you use MariaDB
         as database: replace mentions of `postgresql.service` by
-        `mariadb.service` in `ihatemoney.service`.
+        `mariadb.service` in `ilovemoney.service`.
 
-        Then reload systemd, enable and start `ihatemoney`:
+        Then reload systemd, enable and start `ilovemoney`:
 
             systemctl daemon-reload
-            systemctl enable ihatemoney.service
-            systemctl start ihatemoney.service
+            systemctl enable ilovemoney.service
+            systemctl start ilovemoney.service
 
-4.  Copy (and adapt) output of `ihatemoney generate-config nginx.conf`
+4.  Copy (and adapt) output of `ilovemoney generate-config nginx.conf`
     with your nginx vhosts[^2]
 
 5.  Reload nginx (and supervisord if you use it). It should be working
     ;)
 
-[^1]: `/etc/systemd/system/ihatemoney.service` path may change depending
+[^1]: `/etc/systemd/system/ilovemoney.service` path may change depending
     on your distribution.
 
 [^2]: typically, */etc/nginx/conf.d/* or */etc/nginx/sites-available*,
