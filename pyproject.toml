@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ihatemoney"
+name = "ilovemoney"
 version = "6.2.0.dev0"
 requires-python = ">=3.9"
 description = "A simple shared budget manager web application."
@@ -70,13 +70,13 @@ doc = [
 ]
 
 [project.urls]
-"Source Code" = "https://github.com/spiral-project/ihatemoney"
-"Main instance" = "https://ihatemoney.org/"
-"Mobile app" = "https://ihatemoney.org/mobile"
-"Documentation" = "https://ihatemoney.readthedocs.io/en/latest/"
+"Source Code" = "https://github.com/BoboTiG/ilovemoney"
+"Main instance" = "https://ilovemoney.org/"
+"Mobile app" = "https://ilovemoney.org/mobile"
+"Documentation" = "https://ilovemoney.readthedocs.io/en/latest/"
 
 [project.scripts]
-ihatemoney = "ihatemoney.manage:cli"
+ilovemoney = "ilovemoney.manage:cli"
 
 [tool.hatch.build.hooks.custom]
 dependencies = [
@@ -91,9 +91,9 @@ dependencies = [
 ]
 
 [tool.hatch.build]
-artifacts = ["ihatemoney/translations/**/*.mo"]
+artifacts = ["ilovemoney/translations/**/*.mo"]
 include = [
-    "ihatemoney/",
+    "ilovemoney/",
     "LICENSE",
     "CONTRIBUTORS",
     "CHANGELOG.md",
@@ -103,4 +103,4 @@ include = [
 
 
 [tool.ruff]
-exclude = ["ihatemoney/migrations"]
+exclude = ["ilovemoney/migrations"]

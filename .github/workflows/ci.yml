@@ -30,15 +30,15 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ihatemoney
-          POSTGRES_DB: ihatemoney_ci
+          POSTGRES_PASSWORD: ilovemoney
+          POSTGRES_DB: ilovemoney_ci
         options:
           --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       mariadb:
         image: mariadb:10.11
         env:
-          MARIADB_ROOT_PASSWORD: ihatemoney
-          MARIADB_DATABASE: ihatemoney_ci
+          MARIADB_ROOT_PASSWORD: ilovemoney
+          MARIADB_DATABASE: ilovemoney_ci
         options: >-
           --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
         ports:
@@ -106,8 +106,8 @@ jobs:
           matrix.database == 'sqlite'
             && 'sqlite:///budget.db'
           || matrix.database == 'postgresql'
-            && 'postgresql+psycopg2://postgres:ihatemoney@localhost:5432/ihatemoney_ci'
-          || 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
+            && 'postgresql+psycopg2://postgres:ilovemoney@localhost:5432/ilovemoney_ci'
+          || 'mysql+pymysql://root:ilovemoney@localhost:3306/ilovemoney_ci'
           }}
 
   docs:

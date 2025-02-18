@@ -611,7 +611,7 @@ wheels = [
 ]
 
 [[package]]
-name = "ihatemoney"
+name = "ilovemoney"
 version = "6.2.0.dev0"
 source = { editable = "." }
 dependencies = [

@@ -2,7 +2,7 @@
 
 ## Current direction (as of 2024)
 
-Ihatemoney was started in 2011, and we believe the project has reached a certain
+Ilovemoney was started in 2011, and we believe the project has reached a certain
 level of maturity now. The overall energy of contributors is not as high as it
 used to be.
 
@@ -56,22 +56,22 @@ request.
 
 ### As a translator
 
-If you're able to translate Ihatemoney in your own language, head over
+If you're able to translate Ilovemoney in your own language, head over
 to [the website we use for
-translations](https://hosted.weblate.org/projects/i-hate-money/i-hate-money/)
+translations](https://hosted.weblate.org/projects/i-love-money/i-love-money/)
 and start translating.
 
 All the heavy lifting will be done automatically, and your strings will
 eventually be integrated.
 
 Once a language is ready to be integrated, add it to the
-`SUPPORTED_LANGUAGES` list, in `ihatemoney/default_settings.py`.
+`SUPPORTED_LANGUAGES` list, in `ilovemoney/default_settings.py`.
 
 ### End-user
 
 You are using the application and found a bug? You have some ideas about
 how to improve the project? Please tell us [by filling a new
-issue](https://github.com/spiral-project/ihatemoney/issues).
+issue](https://github.com/BoboTiG/ilovemoney/issues).
 
 Thanks again!
 
@@ -89,7 +89,7 @@ as it is a kind of replacement for pip.
 
 You must develop on top of the Git master branch:
 
-    git clone https://github.com/spiral-project/ihatemoney.git
+    git clone https://github.com/BoboTiG/ilovemoney.git
 
 Then you need to build your dev environment. Choose your way...
 
@@ -113,14 +113,14 @@ would be:
 
 And then run the application:
 
-    cd ihatemoney
+    cd ilovemoney
     python run.py
 
 ### The docker way
 
 If you prefer to use docker, then you can build your image with:
 
-    docker build -t ihatemoney .
+    docker build -t ilovemoney .
 
 ### Accessing dev server
 
@@ -145,7 +145,7 @@ content:
 
 Then before running the application, declare its path with :
 
-    export IHATEMONEY_SETTINGS_FILE_PATH="$(pwd)/settings.cfg"
+    export ILOVEMONEY_SETTINGS_FILE_PATH="$(pwd)/settings.cfg"
 
 You can also set the `TESTING` flag to `True` so no mails are sent (and
 no exception is raised) while you\'re on development mode.
@@ -154,14 +154,14 @@ In some cases, you may need to disable secure cookies by setting
 `SESSION_COOKIE_SECURE` to `False`. This is needed if you access your
 dev server over the network: with the default value of
 `SESSION_COOKIE_SECURE`, the browser will refuse to send the session
-cookie over insecure HTTP, so many features of Ihatemoney won\'t work
+cookie over insecure HTTP, so many features of Ilovemoney won\'t work
 (project login, language change, etc).
 
 (contributing-as-a-dev)=
 ## Contributing as a developer
 
 All code contributions should be submitted as pull requests on the
-[github project](https://github.com/spiral-project/ihatemoney).
+[github project](https://github.com/BoboTiG/ilovemoney).
 
 Below are some points that you should check to help you prepare your
 pull request.
@@ -175,7 +175,7 @@ To run the tests:
 
     make test
 
-Tests can be edited in `ihatemoney/tests/tests.py`. If some test cases
+Tests can be edited in `ilovemoney/tests/tests.py`. If some test cases
 fail because of your changes, first check whether your code correctly
 handle these cases. If you are confident that your code is correct and
 that the test cases simply need to be updated to match your changes,
@@ -204,7 +204,7 @@ have an up-to-date database by running the dev server at least once (the
 quick way or the hard way, see above). The dev server applies all
 existing migrations when starting up.
 
-You can now update the models in `ihatemoney/models.py`. Then run the
+You can now update the models in `ilovemoney/models.py`. Then run the
 following command to create a new database revision file:
 
     make create-database-revision
@@ -221,7 +221,7 @@ script to your final git commit!
 
 If the migration script looks completely wrong, remove the script and
 start again with an empty database. The simplest way is to remove or
-rename the dev database located at `/tmp/ihatemoney.db`, and run the dev
+rename the dev database located at `/tmp/ilovemoney.db`, and run the dev
 server at least once.
 
 For complex migrations, it is recommended to start from an empty
@@ -249,7 +249,7 @@ You then need to write the migration steps yourself.
 The documentation is using
 [sphinx](http://www.sphinx-doc.org/en/stable/) and its source is located
 inside the [docs
-folder](https://github.com/spiral-project/ihatemoney/tree/master/docs).
+folder](https://github.com/BoboTiG/ilovemoney/tree/master/docs).
 
 Install doc dependencies (within the virtual environment, if any):
 

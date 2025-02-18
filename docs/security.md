@@ -1,10 +1,10 @@
 # Security
 
-Ihatemoney does not have user accounts. Instead, authorization is based
+Ilovemoney does not have user accounts. Instead, authorization is based
 around shared projects: this is a bit unusual and deserves some
 explanation about the security model.
 
-First of all, Ihatemoney fundamentally assumes that all members of a
+First of all, Ilovemoney fundamentally assumes that all members of a
 project trust each other. Otherwise, you would probably not share
 expenses in the first place!
 
@@ -71,7 +71,7 @@ from the web interface requires knowledge of the private code.
 
 However, a motivated person could extract the auth token from the
 invitation link, use it to access the project through the API, and
-delete the project through the API.  This is a [known issue](https://github.com/spiral-project/ihatemoney/issues/1206).
+delete the project through the API.  This is a [known issue](https://github.com/BoboTiG/ilovemoney/issues/1206).
 
 ## Removing access to a project
 
@@ -80,7 +80,7 @@ is to change the private code for the whole project.
 
 This will prevent anybody from logging in with the old private code.
 However, anybody with an existing session cookie will still have
-access to the project.  This is a [known issue](https://github.com/spiral-project/ihatemoney/issues/857)
+access to the project.  This is a [known issue](https://github.com/BoboTiG/ilovemoney/issues/857)
 that should be fixed.
 
 Changing the private code will automatically change the auth token:
@@ -94,7 +94,7 @@ links to the RSS feed for the project will no longer work.
 
 If the private code is no longer known, the creator of the project can
 still recover access. He/she must have provided an email address when
-creating the project, and Ihatemoney can send a reset link to this email
+creating the project, and Ilovemoney can send a reset link to this email
 address (classical "forgot your password" functionality).
 
 Note, however, that somebody with the private code could have changed
