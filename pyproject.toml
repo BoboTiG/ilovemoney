@@ -4,7 +4,7 @@ requires = ["hatchling~=1.21.1"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ihatemoney"
+name = "ilovemoney"
 version = "7.2.2.dev0"
 requires-python = ">=3.11"
 description = "A simple shared budget manager web application."
@@ -69,13 +69,13 @@ doc = [
 ]
 
 [project.urls]
-"Source Code" = "https://github.com/spiral-project/ihatemoney"
-"Main instance" = "https://ihatemoney.org/"
-"Mobile app" = "https://ihatemoney.org/mobile"
-"Documentation" = "https://ihatemoney.readthedocs.io/en/latest/"
+"Source Code" = "https://github.com/BoboTiG/ilovemoney"
+"Main instance" = "https://ilovemoney.org/"
+"Mobile app" = "https://ilovemoney.org/mobile"
+"Documentation" = "https://ilovemoney.readthedocs.io/en/latest/"
 
 [project.scripts]
-ihatemoney = "ihatemoney.manage:cli"
+ilovemoney = "ilovemoney.manage:cli"
 
 [tool.hatch.build.hooks.custom]
 dependencies = [
@@ -90,9 +90,9 @@ dependencies = [
 ]
 
 [tool.hatch.build]
-artifacts = ["ihatemoney/translations/**/*.mo"]
+artifacts = ["ilovemoney/translations/**/*.mo"]
 include = [
-    "ihatemoney/",
+    "ilovemoney/",
     "LICENSE",
     "CHANGELOG.md",
     "README.md",
@@ -101,7 +101,7 @@ include = [
 
 
 [tool.ruff]
-exclude = ["ihatemoney/migrations"]
+exclude = ["ilovemoney/migrations"]
 
 [tool.ruff.lint]
 ignore = ["RUF012", "DTZ007", "UP031", "BLE001", "DTZ011", "RUF013", "B006", "DTZ002", "DTZ005", "UP012", "UP024"]

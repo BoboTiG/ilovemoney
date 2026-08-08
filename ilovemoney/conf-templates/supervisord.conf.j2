@@ -1,0 +1,6 @@
+[program:ilovemoney]
+command={{ bin_path }}/gunicorn -c /etc/ilovemoney/gunicorn.conf.py ilovemoney.wsgi:application
+user=ilovemoney
+autostart=true
+autorestart=true
+redirect_stderr=true

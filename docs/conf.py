@@ -4,9 +4,9 @@ templates_path = ["_templates"]
 source_suffix = ".rst"
 master_doc = "index"
 
-project = "I hate money"
+project = "I love money"
 year = datetime.datetime.now().strftime("%Y")
-copyright = f"2011-{year}, The 'I hate money' team"
+copyright = f"2011-{year}, The 'I love money' team"
 
 version = "5.0"
 release = "5.0"
