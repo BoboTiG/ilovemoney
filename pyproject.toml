@@ -37,7 +37,7 @@ dependencies = [
     "Flask-RESTful~=0.3.10",  # last update may 23
     "Flask-SQLAlchemy~=3.1.1",
     "Flask-Talisman~=1.1.0",  # last update aug. 23
-    "Flask-WTF~=1.2.2",
+    "Flask-WTF>=1.2.2,<1.4.0",
     "itsdangerous~=2.2.0",
     "Jinja2~=3.1.6",
     "python-dateutil",
