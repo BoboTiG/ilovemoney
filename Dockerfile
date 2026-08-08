@@ -6,7 +6,7 @@ ENV PORT="8000" \
     # Turns off buffering for easier container logging
     PYTHONUNBUFFERED=1
 
-# ihatemoney configuration
+# ilovemoney configuration
 ENV DEBUG="False" \
     ACTIVATE_ADMIN_DASHBOARD="False" \
     ACTIVATE_DEMO_PROJECT="True" \
@@ -24,7 +24,7 @@ ENV DEBUG="False" \
     SECRET_KEY="tralala" \
     SESSION_COOKIE_SECURE="True" \
     SHOW_ADMIN_EMAIL="True" \
-    SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
+    SQLALCHEMY_DATABASE_URI="sqlite:////database/ilovemoney.db" \
     SQLALCHEMY_TRACK_MODIFICATIONS="False" \
     APPLICATION_ROOT="/" \
     ENABLE_CAPTCHA="False" \
@@ -42,7 +42,7 @@ RUN echo "**** install build dependencies ****" &&\
     shadow \
     postgresql-libs && \
     echo "**** create runtime folder ****" && \
-    mkdir -p /etc/ihatemoney &&\
+    mkdir -p /etc/ilovemoney &&\
     echo "**** install pip packages ****" && \
     pip install --no-cache-dir \
     gunicorn && \

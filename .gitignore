@@ -11,7 +11,7 @@ build
 .vscode
 .env
 .pytest_cache
-ihatemoney/budget.db
+ilovemoney/budget.db
 .idea/
 .envrc
 .DS_Store
@@ -19,3 +19,7 @@ ihatemoney/budget.db
 .python-version
 .coverage*
 prof
+app.py
+ilovemoney.cfg
+ilovemoney.sqlite
+venv/

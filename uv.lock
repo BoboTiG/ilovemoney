@@ -503,7 +503,7 @@ wheels = [
 ]
 
 [[package]]
-name = "ihatemoney"
+name = "ilovemoney"
 version = "7.2.1.dev0"
 source = { editable = "." }
 dependencies = [

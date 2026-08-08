@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+    ServerAdmin admin@example.com      # CUSTOMIZE
+    ServerName ilovemoney.example.com  # CUSTOMIZE
+    WSGIDaemonProcess ilovemoney user=www-data group=www-data threads=5 python-home={{ sys_prefix }}
+    WSGIScriptAlias / {{ pkg_path }}/wsgi.py
+    WSGIPassAuthorization On
+
+    ErrorLog /var/log/apache2/ilovemoney.example.com_error.log
+    CustomLog /var/log/apache2/ilovemoney.example.com_access.log combined
+
+    <Directory {{ pkg_path }}>
+       WSGIProcessGroup ilovemoney
+       WSGIApplicationGroup %{GLOBAL}
+       Require all granted
+    </Directory>
+
+    Alias /static/ {{ pkg_path }}/static/
+</VirtualHost>
