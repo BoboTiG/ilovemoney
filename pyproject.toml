@@ -65,7 +65,7 @@ dev = [
 doc = [
     "Sphinx~=9.0.4",  # Last version to support Py 3.11
     "docutils~=0.22.4",
-    "myst-parser~=5.0.0",
+    "myst-parser>=5.0,<5.2",
 ]
 
 [project.urls]
